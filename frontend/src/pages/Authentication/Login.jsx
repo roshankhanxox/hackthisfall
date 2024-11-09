@@ -6,53 +6,48 @@ import { useNavigate } from "react-router-dom";
 
 function Signup() {
     const [formData, setFormData] = React.useState({
-        email: "",
         username: "",
         password: "",
     });
 
-    async function handleSignup(e) {
+    const [isLogged, setIsLogged] = React.useState(false);
+
+    function handleLogin(e) {
         e.preventDefault();
 
-        const apiUrl = "http://127.0.0.1:8000/register/";
+        const res = fetch("http://localhost:3000/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
 
-        try {
-            const res = await fetch(apiUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
-
-            console.log(formData);
-
+        res.then((res) => {
             if (res.status === 400) {
                 alert("Please provide all the required fields");
-            } else if (res.status === 409) {
-                alert("User already exists");
-            } else if (res.status === 500) {
-                alert("An error occurred");
-            } else if (res.status === 201) {
-                alert("User created");
-                Navigate("/dashboard");
+            } else if (res.status === 404) {
+                alert("User not found");
+            } else if (res.status === 401) {
+                alert("Password is incorrect");
+            } else if (res.status === 200) {
+                alert("User logged in");
+                setIsLogged(true);
             } else {
                 alert("An error occurred");
             }
-        } catch (error) {
-            console.error("Error during signup:", error);
-            alert("An error occurred while signing up.");
-        }
+        });
 
-        // Reset form data
         setFormData({
-            email: "",
             username: "",
             password: "",
         });
 
-        console.log("Submitted");
+        if (isLogged) {
+            console.log("Logged in");
+        }
     }
+
 
     return (
         <div className="bg-[#161716] px-8 py-6 h-dvh bg-stripes bg-cover">
@@ -61,24 +56,12 @@ function Signup() {
                 <Card className="w-[90%] md:w-[50%] lg:w-[30%] bg-neutral-700 text-white font-ibm">
                     <CardHeader>
                         <h1 className="text-2xl font-semibold text-center uppercase">
-                            Sign Up
+                            Log In
                         </h1>
                     </CardHeader>
                     <CardContent>
-                        <form onSubmit={handleSignup}>
-                            <div className=" text-slate-900 space-y-8">
-                                <div>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        placeholder="Email..."
-                                        className="w-full bg-card text-black p-2 rounded-md"
-                                        value={formData.email}
-                                        onChange={(e) =>
-                                            setFormData({ ...formData, email: e.target.value })
-                                        }
-                                    />
-                                </div>
+                        <form onSubmit={handleLogin}>
+                            <div className="text-slate-900 space-y-8">
                                 <div>
                                     <input
                                         type="username"
@@ -95,8 +78,8 @@ function Signup() {
                                     <input
                                         type="password"
                                         id="password"
-                                        className="w-full bg-card text-black p-2 rounded-md"
                                         placeholder="Password..."
+                                        className="w-full bg-card text-black p-2 rounded-md"
                                         value={formData.password}
                                         onChange={(e) =>
                                             setFormData({ ...formData, password: e.target.value })
@@ -105,8 +88,8 @@ function Signup() {
                                 </div>
                                 <p className="font-semibold text-neutral-300">
                                     Already signed up?{" "}
-                                    <Link to="/login" className="underline-offset-4">
-                                        Login here
+                                    <Link to="/signup" className="underline-offset-4">
+                                        Sign up!
                                     </Link>
                                 </p>
                                 <div>
@@ -114,7 +97,7 @@ function Signup() {
                                         className="w-full bg-amber-200 text-neutral-800 p-2 rounded-md"
                                         type="submit"
                                     >
-                                        Sign Up
+                                        Login
                                     </button>
                                 </div>
                             </div>

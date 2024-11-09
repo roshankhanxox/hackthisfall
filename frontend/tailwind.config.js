@@ -59,6 +59,7 @@ export default {
 				"prot": "url('/prot.png')",
 				"slant": "url('/slanted-gradient.svg')",
 				"stripes": "url('/stripes.svg')",
+				"endless": "url('/endless.svg')",
 			},
 			fontFamily: {
 				halo: ['HaloDek', 'sans-serif'],
