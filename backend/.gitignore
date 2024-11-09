@@ -1,0 +1,13 @@
+# Ignore the virtual environment folder
+./venv
+tut-env
+
+# Ignore the virtual environment folder
+venv
+
+*.env
+
+*.pkl
+
+
+
