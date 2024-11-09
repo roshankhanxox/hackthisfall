@@ -56,6 +56,9 @@ export default {
 				"hero": "url('/ai-dr.jpeg')",
 				"sup": "url('/med.jpeg')",
 				"rosie": "url('/rosie.jpg')",
+				"prot": "url('/prot.png')",
+				"slant": "url('/slanted-gradient.svg')",
+				"stripes": "url('/stripes.svg')",
 			},
 			fontFamily: {
 				halo: ['HaloDek', 'sans-serif'],

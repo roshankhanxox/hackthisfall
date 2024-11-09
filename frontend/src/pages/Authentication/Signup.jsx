@@ -47,17 +47,17 @@ function Signup() {
     }
 
     return (
-        <div className="bg-[#161716] px-8 py-6 h-dvh bg-rosie bg-cover">
+        <div className="bg-[#161716] px-8 py-6 h-dvh bg-stripes bg-cover">
             <Navbar />
             <div className="text-white size-full flex h-[90%] items-center justify-center">
-                <Card className="w-[90%] md:w-[50%] lg:w-[30%] shadow-slate-50">
+                <Card className="w-[90%] md:w-[50%] lg:w-[30%] bg-neutral-700 text-white font-ibm">
                     <CardHeader>
                         <h1 className="text-2xl font-semibold text-center uppercase ">
                             Sign Up
                         </h1>
                     </CardHeader>
                     <CardContent>
-                        <form className="font-itim" onSubmit={handleSignup}>
+                        <form onSubmit={handleSignup}>
                             <div className=" text-slate-900 space-y-8">
                                 <div>
                                     <input
@@ -95,8 +95,8 @@ function Signup() {
                                         }
                                     />
                                 </div>
-                                <p>
-                                    Already signed up?
+                                <p className="font-semibold text-neutral-300">
+                                    Already signed up?{" "}
                                     <Link to="/login" className="underline-offset-4">
                                         Login here
                                     </Link>
