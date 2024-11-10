@@ -75,8 +75,8 @@ export default function Dashboard() {
     };
 
     const user = {
-        username: "DrBlunt123",
-        email: "drblunt@example.com",
+        username: "DrBlunt12",
+        email: "drblunt12@example.com",
     };
 
     return (
