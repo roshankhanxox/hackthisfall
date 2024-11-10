@@ -1,4 +1,4 @@
-# Dr. Blunt - Medical Symptom Prediction and Guidance Platform
+# Dr. Blunt - Medical Symptom Prediction Platform
 
 Dr. Blunt is an AI-powered web application designed to help users quickly understand potential health issues based on their symptoms. By entering a description of symptoms, users receive a list of possible diagnoses along with confidence levels. Dr. Blunt aims to provide immediate health insights, encourage early awareness, and guide users toward informed health decisions.
 
