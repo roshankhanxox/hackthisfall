@@ -10,3 +10,8 @@ urlpatterns = [
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost:5173",  # Your frontend URL
+]
+CORS_ALLOW_ALL_ORIGINS = True
