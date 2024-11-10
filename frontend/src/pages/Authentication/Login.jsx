@@ -1,8 +1,7 @@
 import React from "react";
 import Navbar from "../../components/functions/Navbar";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
-import { Link, Navigate, redirect } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
     const [formData, setFormData] = React.useState({
@@ -11,11 +10,14 @@ function Signup() {
     });
 
     const [isLogged, setIsLogged] = React.useState(false);
+    const Navigate = useNavigate();
 
-    function handleLogin(e) {
+    async function handleLogin(e) {
         e.preventDefault();
 
-        const res = fetch("http://localhost:3000/auth/login", {
+        const apiUrl = "http://127.0.0.1:8000/token/";
+
+        const res = fetch(apiUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -33,6 +35,7 @@ function Signup() {
             } else if (res.status === 200) {
                 alert("User logged in");
                 setIsLogged(true);
+                Navigate("/dashboard");
             } else {
                 alert("An error occurred");
             }

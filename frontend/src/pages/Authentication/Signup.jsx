@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../components/functions/Navbar";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
-import { Link, Navigate, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -10,6 +10,8 @@ function Signup() {
         username: "",
         password: "",
     });
+
+    const Navigate = useNavigate();
 
     async function handleSignup(e) {
         e.preventDefault();
